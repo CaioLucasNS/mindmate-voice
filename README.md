@@ -1,10 +1,11 @@
-# 🎙️ MindMate Voice
+## 🎙️ Etapa 2 — Gravação de Áudio
 
-**EN-US:** AI-powered voice note app built with Expo + TypeScript using Clean Architecture.  
-**PT-BR:** Aplicativo de notas de voz com IA construído com Expo + TypeScript e Clean Architecture.
+**EN-US:**  
+This feature uses `expo-av` to capture audio locally with permission handling and state management via a custom hook.
 
-## ▶️ Getting started
+**PT-BR:**  
+Esta funcionalidade usa `expo-av` para capturar áudio localmente, com controle de permissão e estado via hook customizado.
 
-```bash
-npx create-expo-app mindmate-voice --template
-yarn start
+📁 Files:
+- `useAudioRecorder.ts`: encapsulates audio logic
+- `AudioRecorder.tsx`: UI component
