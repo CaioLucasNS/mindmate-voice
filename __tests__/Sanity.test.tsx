@@ -8,3 +8,9 @@ describe('Sanity Test', () => {
         expect(getByText('Hello World')).toBeTruthy();
     });
 });
+
+describe('Sanity test 2', () => {
+    it('works', () => {
+        expect(true).toBe(true);
+    });
+});
