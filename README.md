@@ -1,9 +1,11 @@
 # 🧠 MindMate Voice
 
 ### PT-BR
-Aplicativo mobile em React Native com reconhecimento de voz e integração com IA (OpenAI API).  
+
+Aplicativo mobile em React Native com reconhecimento de voz e integração com IA (OpenAI API).
 
 ### EN-US
+
 Mobile app built with React Native featuring voice recognition and AI integration (OpenAI API).
 
 ---
@@ -17,6 +19,7 @@ Mobile app built with React Native featuring voice recognition and AI integratio
 - **tsyringe** (Injeção de dependência / Dependency Injection)
 - **Clean Architecture**
 - **Jest** (Testes unitários / Unit testing)
+- **ESLint + Prettier** (Padronização de código e regras de qualidade / Code formatting and quality rules)
 
 ---
 
@@ -26,9 +29,10 @@ Mobile app built with React Native featuring voice recognition and AI integratio
 mindmate-voice/
 ├── src/
 │   ├── domain/              # Entidades e contratos / Entities and interfaces
-│   ├── infra/      # Implementações concretas / Concrete implementations
-│   ├── presentation/        # UI e hooks
-│   ├── services/        # Injeção do tsyringe / tsyringe injection
+│   ├── infra/               # Implementações concretas / Concrete implementations
+│   ├── presentation/        # UI e hooks / UI and hooks
+│   ├── services/            # Injeção do tsyringe / tsyringe injection
 │   ├── shared/              # Estilos, configs, helpers / Styles, configs, helpers
-│   ├── tests/              # Testes unitários / Units tests
+│   ├── tests/               # Testes unitários / Unit tests
 │   └── main.ts              # Ponto de entrada / DI entry point
+```
