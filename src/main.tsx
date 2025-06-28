@@ -1,11 +1,27 @@
 import React from 'react';
-import { View, Text, StatusBar } from 'react-native';
+import { PaperProvider } from 'react-native-paper';
+import { ThemeProvider, useThemeApp } from '@/shared/contexts/ThemeContext';
+import { StatusBar } from 'react-native';
+import HomeScreen from '@/presentation/screens/HomeScreen';
 
-export default function Main() {
+const Main = () => {
+  const { theme, isDarkTheme } = useThemeApp();
+
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <StatusBar barStyle="light-content" backgroundColor="#FFF" />
-      <Text style={{ color: "#FFF" }}>✅ MindMate Voice is running</Text>
-    </View>
+    <PaperProvider theme={theme}>
+      <StatusBar
+        barStyle={isDarkTheme ? 'light-content' : 'dark-content'}
+        backgroundColor={theme.colors.background}
+      />
+      <HomeScreen />
+    </PaperProvider>
+  );
+};
+
+export default function Root() {
+  return (
+    <ThemeProvider>
+      <Main />
+    </ThemeProvider>
   );
 }
