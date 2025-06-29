@@ -1,8 +1,11 @@
 import React from 'react';
-import { PaperProvider } from 'react-native-paper';
-import { ThemeProvider, useThemeApp } from '@/shared/contexts/ThemeContext';
+
 import { StatusBar } from 'react-native';
+
+import { PaperProvider } from 'react-native-paper';
+
 import HomeScreen from '@/presentation/screens/HomeScreen';
+import { ThemeProvider, useThemeApp } from '@/shared/contexts/ThemeContext';
 
 const Main = () => {
   const { theme, isDarkTheme } = useThemeApp();
@@ -10,18 +13,20 @@ const Main = () => {
   return (
     <PaperProvider theme={theme}>
       <StatusBar
-        barStyle={isDarkTheme ? 'light-content' : 'dark-content'}
         backgroundColor={theme.colors.background}
+        barStyle={isDarkTheme ? 'light-content' : 'dark-content'}
       />
       <HomeScreen />
     </PaperProvider>
   );
 };
 
-export default function Root() {
+const Root = () => {
   return (
     <ThemeProvider>
       <Main />
     </ThemeProvider>
   );
-}
+};
+
+export default Root;

@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
+
 import { View, Text, Button, ActivityIndicator } from 'react-native';
+
 import { Audio } from 'expo-av';
 
 import { summarizeAudio } from '@/services/openai/summarizeAudio';
 
 import styles from './styles';
 
-export function AudioSummaryScreen() {
+export const AudioSummaryScreen = () => {
   const [recording, setRecording] = useState<Audio.Recording | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [summary, setSummary] = useState('');
@@ -17,7 +19,7 @@ export function AudioSummaryScreen() {
       await Audio.setAudioModeAsync({ allowsRecordingIOS: true, playsInSilentModeIOS: true });
 
       const { recording } = await Audio.Recording.createAsync(
-        Audio.RecordingOptionsPresets.HIGH_QUALITY
+        Audio.RecordingOptionsPresets.HIGH_QUALITY,
       );
       setRecording(recording);
     } catch (err) {
@@ -27,7 +29,9 @@ export function AudioSummaryScreen() {
 
   async function stopRecording() {
     setIsLoading(true);
-    recording && (await recording.stopAndUnloadAsync());
+    if (recording) {
+      await recording.stopAndUnloadAsync();
+    }
     const uri = recording?.getURI();
 
     if (!uri) return;
@@ -40,9 +44,12 @@ export function AudioSummaryScreen() {
 
   return (
     <View style={styles.container}>
-      <Button title={recording ? 'Stop Recording' : 'Start Recording'} onPress={recording ? stopRecording : startRecording} />
+      <Button
+        title={recording ? 'Stop Recording' : 'Start Recording'}
+        onPress={recording ? stopRecording : startRecording}
+      />
       {isLoading && <ActivityIndicator />}
       {summary && <Text style={styles.result}>{summary}</Text>}
     </View>
   );
-}
+};

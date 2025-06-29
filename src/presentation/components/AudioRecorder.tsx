@@ -1,17 +1,21 @@
 import React from 'react';
+
 import { View, Button, Text } from 'react-native';
+
 import { useAudioRecorder } from '../hooks/useAudioRecorder';
 
-export function AudioRecorder() {
+import { styles } from './styles';
+
+export const AudioRecorder = () => {
   const { recording, uri, startRecording, stopRecording } = useAudioRecorder();
 
   return (
-    <View style={{ padding: 16 }}>
+    <View style={styles.container}>
       <Button
         title={recording ? 'Stop Recording' : 'Start Recording'}
         onPress={recording ? stopRecording : startRecording}
       />
-      {uri && <Text style={{ marginTop: 10 }}>🎧 Audio saved at: {uri}</Text>}
+      {uri && <Text style={styles.audioText}>🎧 Audio saved at: {uri}</Text>}
     </View>
   );
-}
+};

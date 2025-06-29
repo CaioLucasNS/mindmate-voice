@@ -1,16 +1,18 @@
-import React from "react";
-import { IconButton } from "react-native-paper";
-import { useThemeApp } from "@/shared/contexts/ThemeContext";
+import React from 'react';
 
-export function ThemeToggleButton() {
+import { IconButton } from 'react-native-paper';
+
+import { useThemeApp } from '@/shared/contexts/ThemeContext';
+
+export const ThemeToggleButton = () => {
   const { isDarkTheme, toggleTheme } = useThemeApp();
 
   return (
     <IconButton
-      icon={isDarkTheme ? "white-balance-sunny" : "moon-waning-crescent"}
+      accessibilityLabel='Alternar tema'
+      icon={isDarkTheme ? 'white-balance-sunny' : 'moon-waning-crescent'}
       selected={isDarkTheme}
       onPress={toggleTheme}
-      accessibilityLabel="Alternar tema"
     />
   );
-}
+};
