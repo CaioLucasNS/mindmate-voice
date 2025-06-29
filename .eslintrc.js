@@ -9,6 +9,7 @@ module.exports = {
     "plugin:import/recommended",
     "plugin:import/typescript",
     "plugin:prettier/recommended",
+    "plugin:react-native/all"
   ],
   parser: "@typescript-eslint/parser",
   plugins: [
@@ -18,6 +19,7 @@ module.exports = {
     "jsx-a11y",
     "import",
     "prettier",
+    "react-native"
   ],
   parserOptions: {
     ecmaVersion: 2021,

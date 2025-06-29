@@ -12,7 +12,7 @@ Mobile app built with React Native featuring voice recognition and AI integratio
 
 ## 📦 Tecnologias Principais / Main Technologies
 
-- **React Native** `0.71.x`
+- **React Native** `0.79.4`
 - **Typescript**
 - **Expo**
 - **OpenAI API**
