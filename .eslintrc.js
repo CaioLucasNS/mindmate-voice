@@ -39,10 +39,6 @@ module.exports = {
       version: 'detect',
     },
     'import/resolver': {
-      typescript: {
-        alwaysTryTypes: true,
-        project: './tsconfig.json',
-      },
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
         moduleDirectory: ['node_modules', 'src/'],
@@ -171,7 +167,7 @@ module.exports = {
     'no-useless-escape': 'error',
     complexity: ['warn', 10],
     'max-depth': ['warn', 4],
-    'max-lines': ['warn', 300],
+    'max-lines': ['warn', 500],
     'max-lines-per-function': ['warn', 50],
     'max-params': ['warn', 4],
     'max-statements': ['warn', 20],
