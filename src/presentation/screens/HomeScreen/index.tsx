@@ -5,9 +5,31 @@ import { useThemeColors } from '@/presentation/themes/useThemeColors';
 import { VoiceAICard } from '@/presentation/components/VoiceAICard';
 import { VoiceAIButton } from '@/presentation/components/VoiceAIButton';
 import { ThemeToggleButton } from '@/presentation/components/ThemeToggleButton';
+import { TranscribedTextCard } from '@/presentation/components/TranscribedTextCard';
+import { ErrorMessageCard } from '@/presentation/components/ErrorMessageCard';
+import { useVoiceRecognition } from '@/presentation/hooks/useVoiceRecognition';
 
 const HomeScreen = () => {
   const colors = useThemeColors();
+  const {
+    isRecording,
+    transcribedText,
+    isProcessing,
+    error,
+    startRecording,
+    stopRecording,
+    clearText,
+    clearError,
+    isUsingAPI,
+  } = useVoiceRecognition();
+
+  const handleVoiceButtonPress = async () => {
+    if (isRecording) {
+      await stopRecording();
+    } else {
+      await startRecording();
+    }
+  };
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
@@ -29,17 +51,26 @@ const HomeScreen = () => {
         </Text>
       </VoiceAICard>
 
+      {/* Card de erro */}
+      <ErrorMessageCard error={error || ''} onDismiss={clearError} />
+
+      {/* Card de texto transcrito */}
+      <TranscribedTextCard
+        isProcessing={isProcessing}
+        isUsingAPI={isUsingAPI}
+        text={transcribedText}
+        onClear={clearText}
+      />
+
       {/* Botão de ação principal */}
       <VoiceAIButton
         fullWidth
+        loading={isProcessing}
         size='large'
         style={styles.button}
-        title='Iniciar Reconhecimento'
+        title={isRecording ? 'Parar Gravação' : 'Iniciar Reconhecimento'}
         variant='voice'
-        onPress={() => {
-          console.log('Iniciar Reconhecimento');
-          /* iniciar reconhecimento de voz */
-        }}
+        onPress={handleVoiceButtonPress}
       />
     </View>
   );
